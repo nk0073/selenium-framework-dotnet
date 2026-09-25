@@ -41,6 +41,7 @@ public abstract class BaseTest
     [SetUp]
     public void StartBrowser()
     {
+        ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
         if (!_driverTest) return;
         
         // COMMENT THIS
@@ -60,7 +61,6 @@ public abstract class BaseTest
 
         IWebDriver _driver = DriverFactory.GetBrowser(webEType, implicitWait, headless);
         // json returns Int64 so it needs to be manually changed to Int32
-        ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
         driver = new CustomDriver(_driver);
     }
 
